@@ -1,6 +1,8 @@
 
 local lp = game:service"Players".LocalPlayer;
 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/WhiteGravys/GuiBypass/main/Skidded", true))();
+
 function Antikick()
     local mt = getrawmetatable(game)
     local old = mt.namecall
@@ -42,6 +44,8 @@ local tab = win:Tab("Auto Farming")
 
 local tab2 = win:Tab("Misc")
 
+local tab3 = win:Tab("Auto Skill")
+
 tab:Toggle("Auto Farm",false, function(yes)
     getgenv().AutoFarm = yes;
     getgenv().Quest = MobToFarm;
@@ -52,6 +56,8 @@ end)
 tab:Dropdown("Mobs",{"Training Dummy","Metal Training Dummy","Grade 1 Curse","Grade 2 Curse","Unique Grade","Corrupt Sorcerer"}, function(Mob)
 MobToFarm = Mob
 end)
+
+
 
 tab2:Toggle("Anti Mod",false, function(hii)
     getgenv().AntiMod = hii
@@ -84,6 +90,48 @@ tab2:Toggle("Put points in health",false, function(state)
     end
 end)
 
+tab2:Toggle("Put points in spirit",false, function(state)
+getgenv().skillpoint = state;
+while getgenv().skillpoint do
+    local args = {
+        [1] = "Mana",
+        [2] = 1
+                 }
+    
+        workspace.EventHolder.AddPoints.Reactor:FireServer(unpack(args))
+        wait(1)
+    end    
+end)
+
+tab3:Toggle("Auto Skill R",false, function(state)
+getgenv().SkillR = state;
+while getgenv().SkillR do
+    local args = {
+        [1] = workspace.Terrain,
+        [2] = Vector3.new(),
+        [3] = "No"
+    }
+    
+    workspace.EventHolder.R_Skills.Reactor:FireServer(unpack(args))
+        wait(3)
+    end    
+end)
+
+tab3:Toggle("Auto Skill T",false, function(state)
+    getgenv().SkillT = state;
+    while getgenv().SkillT do
+local args = {
+    [1] = Vector3.new(),
+    [2] = CFrame.new(Vector3.new(), Vector3.new()),
+    [3] = "No"
+}
+
+workspace.EventHolder.T_Skills.Reactor:FireServer(unpack(args))
+
+            wait(3)
+        end    
+    end)
+
 tab:Label("Made By Windows X")
 
 while getgenv().AntiMod do
@@ -111,3 +159,4 @@ getgenv().rejoin = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.Chil
         game:GetService("TeleportService"):Teleport(game.PlaceId)
     end
 end)
+
