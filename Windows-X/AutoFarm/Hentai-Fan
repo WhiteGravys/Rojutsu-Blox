@@ -106,10 +106,8 @@ while getgenv().AntiMod do
     end
 end
 
-while getgenc().rejoin_on_kick do 
-  game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(
-  function()
-    game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
-  end
-)  
+getgenv().rejoin = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+    if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+        game:GetService("TeleportService"):Teleport(game.PlaceId)
     end
+end)
