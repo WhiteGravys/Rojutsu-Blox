@@ -1,5 +1,5 @@
-
 local lp = game:service"Players".LocalPlayer;
+local breakgame = 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/WhiteGravys/GuiBypass/main/Skidded", true))();
 
@@ -44,8 +44,6 @@ local tab = win:Tab("Auto Farming")
 
 local tab2 = win:Tab("Misc")
 
-local tab3 = win:Tab("Auto Skill")
-
 tab:Toggle("Auto Farm",false, function(yes)
     getgenv().AutoFarm = yes;
     getgenv().Quest = MobToFarm;
@@ -63,74 +61,28 @@ tab2:Toggle("Anti Mod",false, function(hii)
     getgenv().AntiMod = hii
 end)
 
-tab2:Toggle("Put points in strength",false, function(state)
-getgenv().stats = state
-while getgenv().stats do
-local args = {
+tab2:Toggle("Inf Stats",false, function(lol)
+    workspace.EventHolder.AddPoints.Reactor:FireServer("Points", 0/0)
+    local args = {
     [1] = "Strength",
-    [2] = 1
+    [2] = breakgame
 }
 
 workspace.EventHolder.AddPoints.Reactor:FireServer(unpack(args))
-
-        wait(1)
-    end
-end)
-
-tab2:Toggle("Put points in health",false, function(state)
-    getgenv().AutoSkill2 = state;
-    while getgenv().AutoSkill2 do
-    local args = {
-     [1] = "Endurance",
-     [2] = 1
-                 }
-
-        workspace.EventHolder.AddPoints.Reactor:FireServer(unpack(args))
-        wait(1)
-    end
-end)
-
-tab2:Toggle("Put points in spirit",false, function(state)
-getgenv().skillpoint = state;
-while getgenv().skillpoint do
-    local args = {
-        [1] = "Mana",
-        [2] = 1
-                 }
-    
-        workspace.EventHolder.AddPoints.Reactor:FireServer(unpack(args))
-        wait(1)
-    end    
-end)
-
-tab3:Toggle("Auto Skill R",false, function(state)
-getgenv().SkillR = state;
-while getgenv().SkillR do
-    local args = {
-        [1] = workspace.Terrain,
-        [2] = Vector3.new(),
-        [3] = "No"
-    }
-    
-    workspace.EventHolder.R_Skills.Reactor:FireServer(unpack(args))
-        wait(3)
-    end    
-end)
-
-tab3:Toggle("Auto Skill T",false, function(state)
-    getgenv().SkillT = state;
-    while getgenv().SkillT do
 local args = {
-    [1] = Vector3.new(),
-    [2] = CFrame.new(Vector3.new(), Vector3.new()),
-    [3] = "No"
-}
+     [1] = "Endurance",
+     [2] = breakgame
+                 }
 
-workspace.EventHolder.T_Skills.Reactor:FireServer(unpack(args))
-
-            wait(3)
-        end    
-    end)
+        workspace.EventHolder.AddPoints.Reactor:FireServer(unpack(args))
+        local args = {
+        [1] = "Mana",
+        [2] = breakgame
+                 }
+    
+        workspace.EventHolder.AddPoints.Reactor:FireServer(unpack(args))
+    
+end)
 
 tab:Label("Made By Windows X")
 
